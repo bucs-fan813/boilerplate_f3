@@ -13,40 +13,44 @@ ENV PHP_MAX_POST        10M
 #RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
 RUN apk update && \
     apk add \
-    mysql mysql-client \
     apache2 \
     apache2-ssl \
-    curl wget \
-    tzdata \
+    mysql \
+    mysql-client \
     php7-apache2 \
-	php7-session \
+    php7-session \
+    php7-pdo \
+    php7-pdo_mysql \
+    php7-mcrypt \
+    php7-openssl \ 
+    php7-json \
+    php7-ctype \
+    curl \
+    php7-curl \
+    wget \
+    tzdata \
+    nodejs \
+    nodejs-npm \
+	ca-certificates \
+	&& update-ca-certificates \
+	&& rm -rf /var/cache/apk/*
 #    php5-cli \
 #    php5-phar \
 #    php5-zlib \
 #    php5-zip \
 #    php5-bz2 \
-#    php5-ctype \
 #    php5-mysqli \
 #    php5-mysql \
-    php7-pdo_mysql \
 #    php5-opcache \
-    php7-pdo \
-    php7-json \
-    php7-curl \
-    nodejs \
-    nodejs-npm\
 #    php5-gd \
 #    php5-gmp \
-    php7-mcrypt \
-    php7-openssl \ 
 #    php5-dom \
 #    php5-xml \
 #    php5-iconv \
 #    php5-xdebug
-	ca-certificates \
 
-&& update-ca-certificates \
-&& rm -rf /var/cache/apk/*
+
+
 
 COPY etc/ssl/cert.pem /usr/local/share/ca-certificates/cert.pem
 

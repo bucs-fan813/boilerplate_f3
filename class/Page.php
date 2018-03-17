@@ -3,7 +3,7 @@ class Page {
     function home($f3) {
         //echo 'I cannot object to an object';
         $f3->set('name','world! its working');
-        echo \Template::instance()->render('templates/test.html');
+        echo \Template::instance()->render('index.html');
         
         //$db = new \DB\SQL('mysql:host=localhost;dbname=test_db', 'root', 'root');
 //         $user = new \DB\SQL\Mapper($db, 'users');
