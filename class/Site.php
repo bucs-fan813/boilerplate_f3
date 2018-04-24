@@ -3,14 +3,14 @@
 use \DB\SQL\Schema;
 //use PDO;
 
-class Site 
+class Site extends Controller
 {
 
     /** @var \DB\SQL */
     protected $db;
 
     /** @var \BASE */
-    protected $f3;
+    //protected $f3;
     
     protected $db_schema;
     
@@ -151,11 +151,12 @@ class Site
         //For each table that is enabled (TRUE) in the config then create its table in the DB using the f3-schema-builder API
         //TODO: Test if this drops or alters tables
         $db = $f3->get('DB');
-        $schema_builder = new \DB\SQL\Schema( $db );
-        //k($tables);
+        $schema_builder = new \DB\SQL\Schema( $db );        
         foreach ($tables as $key => $value)
             if ($value == true && !in_array($this->prefix . $key,$schema_builder->getTables()))
+            {
                 SITE::createTable($key);
+            }
         return true;
     }
     
